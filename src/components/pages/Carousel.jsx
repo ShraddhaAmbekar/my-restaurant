@@ -1,18 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router';
+import '../css/Carousel.css'
 
 const Carousel = () => {
   const slides = [
     {
       id: 1,
       title: "Savor Every Bite",
-description: "Experience the finest dishes crafted with fresh ingredients, bursting with flavors that tell a story of tradition and taste.",
+      description: "Experience the finest dishes crafted with fresh ingredients, bursting with flavors that tell a story of tradition and taste.",
       buttonText: "Order Now",
     },
     {
       id: 2,
       title: "Your Favorite Meals, Delivered",
-description: "From sizzling burgers to cheesy pizzas, enjoy your cravings delivered hot and fresh, straight to your doorstep.",
+      description: "From sizzling burgers to cheesy pizzas, enjoy your cravings delivered hot and fresh, straight to your doorstep.",
       buttonText: "Order Now",
     },
     {

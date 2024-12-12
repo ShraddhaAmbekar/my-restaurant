@@ -1,4 +1,5 @@
 import React from 'react';
+import "../css/Offer.css"
 import { Link } from 'react-router';
 
 const OfferSection = () => {

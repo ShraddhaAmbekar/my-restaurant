@@ -92,7 +92,7 @@ const SignUp = () => {
           </button>
         </form>
         <div className="text-center mt-3">
-          <p className="text-white">Already have an account? <a href="/sign-in" className="text-warning">Sign In</a></p>
+          <p className="text-white">Already have an account? <a href="/signin" className="text-warning">Sign In</a></p>
         </div>
       </div>
     </div>

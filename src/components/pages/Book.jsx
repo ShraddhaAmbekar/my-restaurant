@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../css/Book.css"
 
 const Book = () => {
   const navigate = useNavigate(); // Hook to navigate to different pages
