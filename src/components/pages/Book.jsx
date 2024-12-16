@@ -1,55 +1,65 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Book.css"
+import "../css/Book.css";
+import axios from 'axios';
 
 const Book = () => {
   const navigate = useNavigate(); // Hook to navigate to different pages
 
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [selectedPersons, setSelectedPersons] = useState("");
-  const [bookingDate, setBookingDate] = useState("");
-  const [error, setError] = useState("");
-  const [bookingSuccess, setBookingSuccess] = useState(false);
+  // State to manage form data and errors
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    selectedPersons: "",
+    bookingDate: "",
+  });
+  
+  const [error, setError] = useState("");  // To handle error messages
+  const [bookingSuccess, setBookingSuccess] = useState(false);  // For success message
 
+  // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
-    switch (name) {
-      case "name":
-        setName(value);
-        break;
-      case "phone":
-        setPhone(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "selectedPersons":
-        setSelectedPersons(value);
-        break;
-      case "bookingDate":
-        setBookingDate(value);
-        break;
-      default:
-        break;
-    }
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();  // Prevent form from refreshing the page
 
-    if (!name || !phone || !email || !selectedPersons || !bookingDate) {
+    // Validation for required fields
+    if (!formData.name || !formData.phone || !formData.email || !formData.selectedPersons || !formData.bookingDate) {
       setError("Please fill in all fields.");
-      setBookingSuccess(false);
-    } else {
-      setError("");
-      setBookingSuccess(true);
+      setBookingSuccess(false);  // Reset booking success
+      return;
+    }
 
-      // Redirect to BookingConfirmation page after successful booking
+    setError("");  // Clear error message
+    setBookingSuccess(true);  // Set booking success flag
+
+    try {
+      // Send the form data to the mock API
+      const response = await axios.post(
+        'https://675bdd409ce247eb1937a917.mockapi.io/restaurant/bookingdata',
+        formData
+      );
+      
+      // On success
+      setBookingSuccess(true);
+      setError("");  // Clear any errors
+
+      // Redirect to BookingConfirmation page after a successful booking
       setTimeout(() => {
         navigate("/booking-confirmation");
-      }, 2000); // Delay navigation to show the success message
+      }, 2000); // Delay for 2 seconds before redirecting
+    } catch (err) {
+      // Handle error if the API request fails
+      setError('Error occurred during booking');
+      setBookingSuccess(false);  // Reset success flag
     }
   };
 
@@ -63,40 +73,47 @@ const Book = () => {
           <div className="col-md-6">
             <div className="form_container">
               <form onSubmit={handleSubmit}>
+                {/* Name Input */}
                 <div>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Your Name"
                     name="name"
-                    value={name}
+                    value={formData.name}
                     onChange={handleChange}
                   />
                 </div>
+
+                {/* Phone Input */}
                 <div>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Phone Number"
                     name="phone"
-                    value={phone}
+                    value={formData.phone}
                     onChange={handleChange}
                   />
                 </div>
+
+                {/* Email Input */}
                 <div>
                   <input
                     type="email"
                     className="form-control"
                     placeholder="Your Email"
                     name="email"
-                    value={email}
+                    value={formData.email}
                     onChange={handleChange}
                   />
                 </div>
+
+                {/* Persons Selection */}
                 <div>
                   <select
                     className="form-control nice-select wide"
-                    value={selectedPersons}
+                    value={formData.selectedPersons}
                     onChange={handleChange}
                     name="selectedPersons"
                   >
@@ -109,30 +126,35 @@ const Book = () => {
                     <option value="5">5</option>
                   </select>
                 </div>
+
+                {/* Booking Date */}
                 <div>
                   <input
                     type="date"
                     className="form-control"
                     name="bookingDate"
-                    value={bookingDate}
+                    value={formData.bookingDate}
                     onChange={handleChange}
                   />
                 </div>
 
+                {/* Error and Success Messages */}
                 {error && <div style={{ color: "red" }}>{error}</div>}
                 {bookingSuccess && (
                   <div style={{ color: "green" }}>Booking Successful!</div>
                 )}
 
+                {/* Submit Button */}
                 <div className="btn_box">
                   <button type="submit">Book Now</button>
                 </div>
               </form>
             </div>
           </div>
+
+          {/* Google Map Section */}
           <div className="col-md-6">
             <div className="map_container">
-             {/* google map */}
               <iframe
                 src="https://www.google.com/maps/embed?pb=your_map_embed_code"
                 allowFullScreen

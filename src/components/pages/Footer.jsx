@@ -7,7 +7,6 @@ const Footer = () => {
     <footer className="footer_section">
       <div className="container">
         <div className="row">
-          {/* Contact Us Section */}
           <div className="col-md-4 footer-col">
             <div className="footer_contact">
               <h4>Contact Us</h4>
@@ -28,7 +27,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Footer Details Section */}
           <div className="col-md-4 footer-col">
             <div className="footer_detail">
               <Link to="/" className="footer-logo">
@@ -57,7 +55,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Opening Hours Section */}
           <div className="col-md-4 footer-col">
             <h4>Opening Hours</h4>
             <p>Everyday</p>
@@ -65,7 +62,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Info Section */}
         <div className="footer-info">
           <span id="displayYear">{new Date().getFullYear()}</span> All Rights Reserved By
           <Link to="/" target="_blank" rel="noopener noreferrer">NextBite</Link><br /><br />

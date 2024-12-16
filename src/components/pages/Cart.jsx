@@ -1,75 +1,54 @@
-import React from "react";
-import "../css/Cart.css"; // Make sure to create this file for custom styling
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
+import "../css/Cart.css";
 
 const Cart = ({ cart, onRemove, onUpdateQuantity, onClose }) => {
-  // Calculate total price
+  const navigate = useNavigate();
+
   const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  const navigate = useNavigate(); // Move this to the top of the function
-
-  const handleProceedToPayment = () => {
-    // You no longer need to reference `item.name`, instead use `totalPrice` for the alert and navigation
-    alert(`Proceeding to payment with total price: ₹${totalPrice}`);
-    navigate("/thank-you"); // Navigate to the "thank-you" page
+  const handleCheckout = () => {
+    navigate('/checkout', { state: { cart, totalPrice } }); // Pass cart and totalPrice to Checkout page
+    onClose(); 
   };
 
   return (
-    <div className="cart-container">
-      <div className="cart-header">
-        <h2>Your Cart</h2>
-        <button className="btn-close" onClick={onClose}>
-          ✕
+    <div className="cart-overlay">
+      <div className="cart-content">
+        <button className="close-cart" onClick={onClose}>
+          X
         </button>
-      </div>
-
-      {cart.length === 0 ? (
-        <p className="empty-cart-message">Your cart is empty!</p>
-      ) : (
-        <div className="cart-content">
-          <ul className="cart-items">
-            {cart.map((item) => (
-              <li key={item.id} className="cart-item">
-                <div className="item-img">
+        <h3>Your Cart</h3>
+        <div>
+          {cart.length === 0 ? (
+            <p>Your cart is empty</p>
+          ) : (
+            <div>
+              {cart.map((item) => (
+                <div key={item.id} className="cart-item">
                   <img src={item.imgSrc} alt={item.name} />
-                </div>
-                <div className="item-details">
-                  <h5 className="item-name">{item.name}</h5>
-                  <p className="item-price">Price: ₹{item.price}</p>
-                  <div className="item-quantity">
-                    <button
-                      className="btn-quantity"
-                      onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
-                    >
-                      -
-                    </button>
-                    <span>{item.quantity}</span>
-                    <button
-                      className="btn-quantity"
-                      onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
-                    >
-                      +
-                    </button>
+                  <div className="item-details">
+                    <h5>{item.name}</h5>
+                    <p>₹{item.price}</p>
+                    <div>
+                      <button className="quantity-btn" onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}>-</button>
+                      <span className='quantity-number'>{item.quantity}</span>
+                      <button className="quantity-btn" onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}>+</button>
+                    </div>
+                    <button className='remove-item' onClick={() => onRemove(item.id)}>Remove</button>
                   </div>
-                  <button
-                    className="btn-remove"
-                    onClick={() => onRemove(item.id)}
-                  >
-                    Remove
-                  </button>
                 </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="cart-footer">
-            <h3 className="total-price">Total: ₹{totalPrice}</h3>
-            <button className="btn-checkout" onClick={handleProceedToPayment}>
-              Proceed to Checkout
-            </button>
-          </div>
+              ))}
+              <div className="cart-total">
+                <h4>Total: ₹{totalPrice}</h4>
+                <button onClick={handleCheckout} className="btn btn-primary">
+                  Checkout
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      )}
+      </div>
     </div>
   );
 };

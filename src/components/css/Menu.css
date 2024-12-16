@@ -29,10 +29,8 @@
 }
 
 .food_section .container .box .img-box {
-  background: #d9dada;;
- 
+  background: #e3e4e4;;
   display: flex;
-
   justify-content: center;
 
   align-items: center;
@@ -65,9 +63,7 @@
 }
 
 .food_section .box .options {
-
   display: flex;
-
   justify-content: space-between;
 }
 
@@ -89,13 +85,7 @@
   transform: scale(1.1);
 }
 
-.food_section .container .view-more{
 
-  
-  
-  margin-top: 45px;
-  
-}
 
 .food_section .container .view-more{
   display: inline-block;
@@ -107,9 +97,33 @@
   transition: all 0.3s;
   border: none;
   text-decoration: none;
-
+  margin-top: 45px;
 }
 
 .food_section .container .view-more:hover {
   background-color: #e69c00;
+}
+
+
+.filter-list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.filter-list li {
+  margin-right: 20px; /* Space between items */
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+button {
+  cursor: pointer;
+  
+}
+
+.filters-content {
+  margin-top: 20px;
 }

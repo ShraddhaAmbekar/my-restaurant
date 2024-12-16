@@ -1,8 +1,8 @@
 import React from 'react';
-import Menu from './Menu'; 
-import Book from './Book'; 
-import About from './About'; 
-import Carousel from './Carousel'; 
+import Menu from './Menu';
+import Book from './Book';
+import About from './About';
+import Carousel from './Carousel';
 import OfferSection from './Offer';
 import ClientSection from './Clints';
 
@@ -10,14 +10,13 @@ import ClientSection from './Clints';
 const Home = () => {
   return (
     <div>
-      {/* Hero Area with Carousel */}
       <div className="hero_area">
         <Carousel />
       </div>
       <div className="bg-box">
         <img src="images/hero-bg.jpg" alt="Hero Background" />
       </div>
-      <OfferSection/>
+      <OfferSection />
       <Menu />
       <About />
       <Book />

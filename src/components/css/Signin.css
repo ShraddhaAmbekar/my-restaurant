@@ -1,0 +1,112 @@
+/* Main container for the signin page */
+.signin-page {
+  background-color: #121212; /* Dark background */
+/* White text */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Card styling */
+.card {
+  background: #1e1e1e; /* Dark card background */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Soft shadow */
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Header styling */
+h2 {
+  font-size: 2rem;
+    margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Input field styling */
+.btn-primary input{
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  background: #333;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+input:focus {
+  border-color: #00bcd4;
+  box-shadow: 0 0 5px rgba(0, 188, 212, 0.7);
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #00bcd4; /* Cyan color for the button */
+  color: #fff;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #0097a7; /* Slightly darker cyan on hover */
+}
+
+/* Secondary Button (for navigation) */
+.btn-secondary {
+  background:transparent;
+  color: #fff;
+  border:none
+  
+}
+
+
+
+/* Alert messages */
+.alert {
+  padding: 12px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.alert-success {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.alert-danger {
+  background-color: #f44336;
+  color: #fff;
+}
+
+/* Placeholder text */
+::placeholder {
+  color: #bbb;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .card {
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn-primary {
+    padding: 12px;
+  }
+}

@@ -1,73 +1,84 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';  
+import '../css/Signin.css';
 
-const SignIn = () => {
-  // State to store form data
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+const Signin = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Basic form validation
-    if (!username || !password) {
-      setError("Both fields are required.");
-    } else {
-      setError("");
-      // Simulate authentication (you can replace this with real API call)
-      console.log("Signing in with:", username, password);
+
+    try {
+      // Fetch user data from MockAPI
+      const response = await axios.get('https://675bdd409ce247eb1937a917.mockapi.io/restaurant/signup');
+      const users = response.data;
+
       
-      // Redirect or show a success message
-      alert("Sign In Successful!"); // Replace with actual logic for redirect or dashboard
+      const user = users.find(user => user.email === formData.email && user.password === formData.password);
+
+      if (user) {
+        setSuccess('Signin successful!');
+        setError('');
+      } else {
+        setError('Invalid email or password');
+        setSuccess('');
+      }
+    } catch (err) {
+      setError('Error occurred during signin');
+      setSuccess('');
     }
   };
 
+ 
+
   return (
-    <div className="container-fluid vh-100 bg-dark d-flex justify-content-center align-items-center">
-      <div className="col-lg-4 col-md-6 col-sm-8 p-4 rounded shadow-lg" style={{ backgroundColor: "#333" }}>
-        <h2 className="text-white text-center mb-4">Sign In</h2>
+    <div className="signin-page">
+      <div className="card">
+        <h2>Signin</h2>
+        {error && <div className="alert alert-danger">{error}</div>}
+        {success && <div className="alert alert-success">{success}</div>}
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label text-white">Username</label>
-            <input
-              type="text"
-              className="form-control"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter username"
-              style={{ backgroundColor: "#444", color: "white", borderColor: "#555" }}
-            />
-          </div>
-
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label text-white">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter password"
-              style={{ backgroundColor: "#444", color: "white", borderColor: "#555" }}
-            />
-          </div>
-
-          {error && <div className="text-danger mb-3">{error}</div>}
-
-          <button type="submit" className="btn btn-primary w-100 py-2" style={{ backgroundColor: "#ff7f00", borderColor: "#ff7f00" }}>
-            Sign In
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <button type="submit" className="btn-primary">
+            Signin
           </button>
         </form>
-        <div className="text-center mt-3">
-          <p className="text-white">Don't have an account? <Link to="/signup" className="text-warning">Sign Up</Link></p>
-        </div>
+        <Link to="/signup" className="btn-secondary">
+          Don't have an account? Sign Up
+        </Link>
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default Signin;
