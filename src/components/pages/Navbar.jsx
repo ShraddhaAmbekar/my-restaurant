@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="header_section navbar navbar-expand-lg custom_nav-container">
       <div className="container">
         <NavLink to="/" className="navbar-brand" aria-label="Navigate to Home">
-          <span>nextbite</span>
+          <span>Next</span>Bite
         </NavLink>
         <button
           className="navbar-toggler"
@@ -34,7 +34,6 @@ const Navbar = () => {
           className={`collapse navbar-collapse ${collapsed ? "" : "show"}`}
           id="navbarSupportedContent"
         >
-  
           <ul className="navbar-nav mx-auto">
             {["/", "/menu", "/about", "/book"].map((path, index) => {
               const labels = ["Home", "Menu", "About", "Book Table"];

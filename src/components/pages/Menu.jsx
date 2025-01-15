@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/Menu.css";
 import Cart from "./Cart"; 
-import { menuItems } from "../data/Menuitem"; // Import menu items from local file
+import { menuItems } from "../data/Menuitem"; 
 import { useNavigate } from "react-router";
 
 const Menu = () => {
@@ -10,7 +10,7 @@ const Menu = () => {
   const [cart, setCart] = useState([]);
   const [viewCart, setViewCart] = useState(false);
   const [activeFilter, setActiveFilter] = useState("all"); 
-  const [itemsToShow, setItemsToShow] = useState(6); 
+  const [itemsToShow, setItemsToShow] = useState(4); 
   const handleAddToCart = (item) => {
     const existingItem = cart.find((cartItem) => cartItem.id === item.id);
     if (existingItem) {
@@ -122,7 +122,7 @@ const Menu = () => {
                               className="btn" style={{backgroundColor:"transparent"}}
                               onClick={() => handleAddToCart(item)}
                             >
-                              <i className="fa fa-shopping-cart" style={{ color: "white" }}> Add to cart</i>
+                              <i className="fa fa-shopping-cart" style={{ color: "#ff5722" }}> Add to cart</i>
                             </button>
                           </div>
                         </div>

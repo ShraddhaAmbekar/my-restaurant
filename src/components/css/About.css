@@ -1,44 +1,47 @@
-
 .about_section {
-  background: #222831;
+  background: linear-gradient(to right, #000000, #272727); /* Dark gradient background */
+  padding: 80px 0;
   color: #ffffff;
 }
 
-.about_section .row {
-
-  -ms-flex-align: center;
-  align-items: center;
+.img-box img {
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.about_section .img-box {
-  position: relative;
-
-  display: flex;
-  justify-content: center;
+.img-box img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.about_section .img-box img {
-  width: 100%;
-  max-width: 445px;
-  position: relative;
-  z-index: 2;
+.detail-box {
+  padding: 20px;
 }
 
-.about_section .detail-box p {
-  margin-top: 15px;
+.detail-box .heading_container h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #e4a700; /* Highlight color matching carousel */
 }
 
-.about_section .detail-box a {
+.detail-box p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+.detail-box .btn1 {
   display: inline-block;
-  padding: 10px 45px;
-  background-color: #ffbe33;
-  color: #ffffff;
-  border-radius: 45px;
-  transition: all 0.3s;
-  border: none;
-  margin-top: 15px;
+  font-size: 1rem;
+  padding: 10px 30px;
+  color: #000;
+  background: #e4a700; /* Highlight button color */
+  border-radius: 30px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.about_section .detail-box a:hover {
-  background-color: #e69c00;
+.detail-box .btn1:hover {
+  background-color: #ffffff;
+  color: #000000;
 }

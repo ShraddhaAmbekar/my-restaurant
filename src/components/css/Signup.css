@@ -1,103 +1,108 @@
-/* Main container for the signup page */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Signup Page Styling */
 .signup-page {
-  background-color: #121212; /* Dark background */
-  color: #fff; /* White text */
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Arial', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #1c1c1c, #333); /* Dark gradient background */
+  padding: 20px;
 }
 
-/* Card styling */
-.card {
-  background: #1e1e1e; /* Dark card background */
+.signup-card {
+  background: #fff;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Soft shadow */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   text-align: center;
 }
 
-/* Header styling */
-div.card h2 {
-  font-size: 2rem;
- color:white;
+.signup-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
   margin-bottom: 30px;
-  font-weight: 600;
+  text-transform: uppercase;
 }
 
-/* Input field styling */
+/* Form Group */
+.form-group {
+  margin-bottom: 20px;
+}
+
 input {
   width: 100%;
-  padding: 12px;
-  margin: 12px 0;
-  background: #333;
-  border: 1px solid #444;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  color: #fff;
-  font-size: 1rem;
+  font-size: 16px;
   outline: none;
+  transition: border 0.3s ease;
 }
 
 input:focus {
-  border-color: #00bcd4;
-  box-shadow: 0 0 5px rgba(0, 188, 212, 0.7);
+  border-color: #ff5722;  /* Highlight color on focus */
 }
 
-/* Button styling */
+/* Submit Button */
 .btn-primary {
-  background-color: #00bcd4; /* Cyan color for the button */
-  color: #fff;
-  padding: 14px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  cursor: pointer;
   width: 100%;
-  font-weight: 500;
-  transition: background-color 0.3s;
+  padding: 14px;
+  background-color: #ff5722;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #0097a7; /* Slightly darker cyan on hover */
+  background-color: #e64a19;
 }
 
-/* Alert messages */
+/* Link to Signin */
+.signin-link {
+  margin-top: 15px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  margin-top: 15px;
+  color: #ff5722;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  color: #e64a19;
+}
+
+/* Alerts */
 .alert {
-  padding: 12px;
-  font-size: 0.9rem;
+  padding: 10px;
+  margin-bottom: 20px;
   border-radius: 8px;
-  margin-bottom: 15px;
-}
-
-.alert-success {
-  background-color: #4caf50;
-  color: #fff;
+  font-weight: bold;
 }
 
 .alert-danger {
-  background-color: #f44336;
-  color: #fff;
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
-/* Placeholder text */
-::placeholder {
-  color: #bbb;
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-  .card {
-    padding: 25px;
-  }
-
-  h2 {
-    font-size: 1.6rem;
-  }
-
-  .btn-primary {
-    padding: 12px;
-  }
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
 }

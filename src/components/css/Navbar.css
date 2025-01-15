@@ -1,145 +1,102 @@
-/* Navbar Links */
-.navbar-brand span {
-  font-weight: bold;
-  font-size: 32px;
-  color: #ffffff;
+/* Navbar Section */
+.header_section {
+  background: linear-gradient(45deg, #1c1c1c, #333); 
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.custom_nav-container {
-  padding: 0;
-}
-
-.custom_nav-container .navbar-nav {
-  padding-left: 18%;
-}
-
-.custom_nav-container .navbar-nav .nav-item .nav-link {
-  padding: 5px 20px;
-  color: #ffffff; /* Default link color */
+/* Brand Logo */
+.header_section .navbar-brand {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff5722; /* Same as the carousel button */
   text-transform: uppercase;
-  border-radius: 5px;
-
-  transition: all 0.3s;
-}
-
-.custom_nav-container .navbar-nav .nav-item:hover .nav-link,
-.custom_nav-container .navbar-nav .nav-item.active .nav-link {
-  color: #ffbe33;
-}
-
-.custom_nav-container .nav_search-btn {
-  width: auto;
-  height: auto;
-  padding: 0;
-  border: none;
-  color: #ffffff;
-  background-color: transparent;
-  margin: 0 10px;
-}
-
-.custom_nav-container .nav_search-btn:hover {
-  color: #ffbe33;
-}
-
-.user_option {
-
-  display: -ms-flexbox;
-  display: flex;
-
-  align-items: center;
-}
-
-.user_option a {
-  margin: 0 10px;
-}
-
-.user_option .user_link {
-  color: #ffffff;
-}
-
-.user_option .user_link:hover {
-  color: #ffbe33;
-}
-
-.user_option .cart_link {
-
-  display: flex;
-
-  justify-content: center;
-
-
-  align-items: center;
-}
-
-.user_option .order_online {
-  display: inline-block;
-  padding: 8px 30px;
-  background-color: #ffbe33;
-  color: #ffffff;
-  border-radius: 45px;
-
-  transition: all 0.3s;
-  border: none;
   text-decoration: none;
 }
 
-.user_option .order_online:hover {
-  background-color: #e69c00;
+.header_section .navbar-brand span {
+  color: #fff;
 }
 
-.custom_nav-container .navbar-toggler {
+/* Navbar Toggler */
+.header_section .navbar-toggler {
+  border: none;
   outline: none;
 }
 
-.custom_nav-container .navbar-toggler {
-  padding: 0;
-  width: 37px;
-  height: 42px;
-  transition: all 0.3s;
+.header_section .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  width: 24px;
+  height: 24px;
 }
 
-.custom_nav-container .navbar-toggler span {
-  display: block;
-  width: 35px;
-  height: 4px;
-  background-color: #ffffff;
-  margin: 7px 0;
-  border-radius: 5px;
-  position: relative;
-  transition: transform 0.3s;
+/* Navbar Links */
+.header_section .nav-link {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 10px;
+  transition: color 0.3s ease-in-out;
 }
 
-.custom_nav-container .navbar-toggler span::before,
-.custom_nav-container .navbar-toggler span::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #ffffff;
-  top: -10px;
-  border-radius: 5px;
-
-  transition: all 0.3s;
+.header_section .nav-link:hover {
+  color: #ff5722; 
 }
 
-.custom_nav-container .navbar-toggler span::after {
-  top: 10px;
+/* Active Link */
+.header_section .nav-link.active {
+  color: #ff5722;
+  font-weight: bold; /* Make active link stand out */
 }
 
-.custom_nav-container .navbar-toggler[aria-expanded="true"] {
-
-  transform: rotate(360deg);
+/* User Option Buttons */
+.header_section .user_option .order_online {
+  background-color: #ff5722;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-right: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
 }
 
-.custom_nav-container .navbar-toggler[aria-expanded="true"] span {
-
-  transform: rotate(45deg);
+.header_section .user_option .order_online:hover {
+  background-color: #e64a19;
+  transform: scale(1.05);
 }
 
-.custom_nav-container .navbar-toggler[aria-expanded="true"] span::before,
-.custom_nav-container .navbar-toggler[aria-expanded="true"] span::after {
+.header_section .user_option .user_link {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-left: 10px;
+  transition: color 0.3s ease-in-out;
+}
 
-  transform: rotate(90deg);
-  top: 0;
+.header_section .user_option .user_link:hover {
+  color: #ff5722;
+}
+
+/* Responsive Design Adjustments */
+.header_section .navbar-nav {
+  text-align: center;
+}
+
+.header_section .navbar-collapse {
+  justify-content: center;
+}
+
+.header_section .user_option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Sticky Navbar Shadow Effect */
+.header_section.sticky {
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.7);
 }

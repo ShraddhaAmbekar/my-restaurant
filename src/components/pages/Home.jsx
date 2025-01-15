@@ -13,9 +13,7 @@ const Home = () => {
       <div className="hero_area">
         <Carousel />
       </div>
-      <div className="bg-box">
-        <img src="images/hero-bg.jpg" alt="Hero Background" />
-      </div>
+      
       <OfferSection />
       <Menu />
       <About />

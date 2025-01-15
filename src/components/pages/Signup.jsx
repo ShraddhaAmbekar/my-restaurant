@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';  
 import '../css/Signup.css';
-import { Link } from 'react-router';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -39,55 +39,60 @@ const Signup = () => {
       setError('Error occurred during signup');
       setSuccess('');
     }
-    
   };
 
   return (
     <div className="signup-page">
-      <div className="card">
-        <h2>Signup</h2>
+      <div className="signup-card">
+        <h2 className="signup-title">Create an Account</h2>
         {error && <div className="alert alert-danger">{error}</div>}
         {success && <div className="alert alert-success">{success}</div>}
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit" className="btn-primary">
-            Signup
-          </button>
-          <Link to="/signin" className="btn-secondary" >
-           Already have an account? Sign In
-        </Link>
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn-primary">Sign Up</button>
         </form>
+        <div className="signin-link">
+          <Link to="/signin">Already have an account? Sign In</Link>
+        </div>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../css/Footer.css"
+import "../css/Footer.css";
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -32,8 +32,8 @@ const Footer = () => {
               <Link to="/" className="footer-logo">
                 NextBite
               </Link>
-              <p>
-              "NextBite is more than just a meal – it’s about creating memorable moments with great food and excellent service."
+              <p className="footer-description">
+                "NextBite is more than just a meal – it’s about creating memorable moments with great food and excellent service."
               </p>
               <div className="footer_social">
                 <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
@@ -45,10 +45,10 @@ const Footer = () => {
                 <a href="https://www.linkedin.com">
                   <i className="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.instagram.com" >
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
                   <i className="fa fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.pinterest.com"  rel="noopener noreferrer">
+                <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
                   <i className="fa fa-pinterest" aria-hidden="true"></i>
                 </a>
               </div>
@@ -62,15 +62,15 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="footer-info">
+        <div className="footer-info text-center">
           <span id="displayYear">{new Date().getFullYear()}</span> All Rights Reserved By
-          <Link to="/" target="_blank" rel="noopener noreferrer">NextBite</Link><br /><br />
+          <Link to="/" target="_blank" rel="noopener noreferrer">NextBite</Link><br />
           <span id="displayYear">{new Date().getFullYear()}</span> Distributed By
           <a href="https://themewagon.com/" target="_blank" rel="noopener noreferrer">sense zee</a>
         </div>
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

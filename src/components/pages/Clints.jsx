@@ -1,8 +1,7 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
 import "../css/Client.css";
-import { testimonials } from "../data/Clientdata.js"; // Ensure the path is correct
+import { testimonials } from "../data/Clientdata.js";
 
 const ClientSection = () => {
   // Group testimonials into pairs
@@ -15,30 +14,32 @@ const ClientSection = () => {
     <section className="client_section layout_padding-bottom">
       <div className="container">
         <div className="heading_container heading_center psudo_white_primary mb-45">
-          <h2>What Our Customers Say</h2>
+          <h2 className="section-title">What Our Customers Say</h2>
         </div>
 
         {/* Bootstrap Carousel */}
         <Carousel interval={5000} indicators={false} controls={true} className="carousel-container">
           {groupedTestimonials.map((group, index) => (
             <Carousel.Item key={`carousel-${index}`}>
-              <div className="row">
+              <div className="row justify-content-center">
                 {group.map((testimonial, subIndex) => (
                   <div className="col-md-6 mb-4" key={`testimonial-${index}-${subIndex}`}>
-                    <div className="box">
-                      <div className="detail-box d-flex">
-                        <div className="img-box">
-                          <img
-                            src={testimonial.image}
-                            alt={`Customer ${index * 2 + subIndex + 1}`}
-                            className="box-img"
-                          />
+                    <div className="testimonial-card">
+                      <div className="testimonial-card-body">
+                        <div className="testimonial-header d-flex align-items-center">
+                          <div className="testimonial-img">
+                            <img
+                              src={testimonial.image}
+                              alt={`Customer ${index * 2 + subIndex + 1}`}
+                              className="testimonial-img"
+                            />
+                          </div>
+                          <div className="testimonial-info">
+                            <h6>{testimonial.name}</h6>
+                            <p>{testimonial.location}</p>
+                          </div>
                         </div>
-                        <div className="testimonial-text">
-                          <p>{testimonial.text}</p>
-                          <h6>{testimonial.name}</h6>
-                          <p>{testimonial.location}</p>
-                        </div>
+                        <p className="testimonial-text">{testimonial.text}</p>
                       </div>
                     </div>
                   </div>
